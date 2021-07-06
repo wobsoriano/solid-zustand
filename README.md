@@ -30,10 +30,12 @@ function BearCounter() {
 
 function Controls() {
   const [state, setState] = createStore(store)
-  return <button onClick={state().increase}>one up</button>
-
-  // or
-  // return <button onClick={() => setState({ bears: 10 })}>Make it 10</button>
+  return (
+    <>
+      <button onClick={state().increase}>one up</button>
+      <button onClick={() => setState({ bears: 10 })}>make it 10</button>
+    </>
+  )
 }
 ```
 
