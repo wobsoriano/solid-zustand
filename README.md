@@ -8,6 +8,8 @@ Zustand state management for Solid.
 yarn add zustand solid-zustand
 ```
 
+Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
+
 ## Example
 
 ```jsx
