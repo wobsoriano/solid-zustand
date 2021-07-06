@@ -1,12 +1,12 @@
-import { Accessor, createSignal, onCleanup } from 'solid-js'
-import { SetState, State, StoreApi } from 'zustand/vanilla'
+import { createStore as createSolidStore, reconcile, Store } from 'solid-js/store';
+import { onCleanup } from 'solid-js';
+import { SetState, State, StoreApi } from 'zustand/vanilla';
 
-export function createStore<T extends State>(
-    store: StoreApi<T>
-  ): [Accessor<T>, SetState<T>] {
-    if (!store) throw new Error('A zustand store is required.');
-    const [signal, setSignal] = createSignal(store.getState());
-    const unsub = store.subscribe(setSignal);
-    onCleanup(unsub);
-    return [signal, store.setState];
+export function createStore<T extends State>(store: StoreApi<T>): [Store<T>, SetState<T>] {
+  const [state, setState] = createSolidStore(store.getState());
+  const unsubscribe = store.subscribe((newState) => {
+      setState(reconcile(newState));
+  });
+  onCleanup(() => unsubscribe());
+  return [state, store.setState];
 }

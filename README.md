@@ -28,14 +28,14 @@ const store = create<BearState>(set => ({
 
 function BearCounter() {
   const [state] = createStore(store)
-  return <h1>{state().bears} around here ...</h1>
+  return <h1>{state.bears} around here ...</h1>
 }
 
 function Controls() {
   const [state, setState] = createStore(store)
   return (
     <>
-      <button onClick={state().increase}>one up</button>
+      <button onClick={state.increase}>one up</button>
       {/* Or */}
       <button onClick={() => setState((prev) => ({ bears: prev.bears + 1 }))}>
         one up
