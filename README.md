@@ -11,7 +11,7 @@ yarn add zustand solid-zustand
 ## Example
 
 ```jsx
-import create from 'zustand'
+import create from 'zustand/vanilla'
 import { createStore } from 'solid-zustand'
 
 interface BearState {
