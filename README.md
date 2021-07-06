@@ -37,7 +37,9 @@ function Controls() {
     <>
       <button onClick={state().increase}>one up</button>
       {/* Or */}
-      <button onClick={() => setState((prev) => ({ bears: prev.bears + 1 }))}>one up</button>
+      <button onClick={() => setState((prev) => ({ bears: prev.bears + 1 }))}>
+        one up
+      </button>
     </>
   )
 }
