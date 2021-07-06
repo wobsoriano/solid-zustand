@@ -1,0 +1,31 @@
+{
+  "name": "solid-zustand",
+  "description": "Zustand state management for Solid.",
+  "version": "1.0.0",
+  "main": "./dist/solid-zustand.umd.js",
+  "module": "./dist/solid-zustand.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/solid-zustand.es.js",
+      "require": "./dist/solid-zustand.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "solid-js": "^1.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.1",
+    "vite-plugin-dts": "^0.5.2",
+    "zustand": "^3.5.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wobsoriano/solid-zustand.git"
+  }
+}
