@@ -2,7 +2,7 @@
   "name": "solid-zustand",
   "description": "Zustand state management for Solid.",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "./dist/solid-zustand.umd.js",
   "module": "./dist/solid-zustand.es.js",
   "types": "./dist/index.d.ts",
@@ -28,5 +28,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wobsoriano/solid-zustand.git"
-  }
+  },
+  "dependencies": {}
 }
