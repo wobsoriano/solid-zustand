@@ -2,7 +2,7 @@
   "name": "solid-zustand",
   "description": "Zustand state management for Solid.",
   "license": "MIT",
-  "version": "1.0.5",
+  "version": "1.0.4",
   "main": "dist/solid-zustand.js",
   "module": "dist/solid-zustand.mjs",
   "typings": "dist/solid-zustand.d.ts",
