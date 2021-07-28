@@ -16,8 +16,8 @@ const store = create<BearState>(set => ({
 describe('Testing createStore', () => {
     it('should create store getter and setter', () => {
         const [state, setState] = createStore(store);
-        expect(typeof state).toBe('object');
-        expect(typeof setState).toBe('function');
+        expect(store.getState()).toEqual(state);
+        expect(store.setState).toEqual(setState);
     })
     
     it('should function correct when rendering in Solid', () => {
