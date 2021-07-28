@@ -5,7 +5,7 @@ Zustand state management for Solid.
 ## Install
 
 ```sh
-yarn add zustand solid-zustand
+yarn add solid-zustand
 ```
 
 Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
