@@ -6,6 +6,10 @@
     "esModuleInterop": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noUnusedLocals": true
-  }
+    "noUnusedLocals": true,
+    "lib": ["dom", "esnext", "dom.iterable"],
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  },
+  "include": ["./test"]
 }
