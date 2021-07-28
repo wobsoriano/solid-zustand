@@ -22,9 +22,9 @@ describe('Testing createStore', () => {
     
     it('should function correct when rendering in Solid', () => {
         const div = document.createElement('div');
-        const [state] = createStore(store);
-        expect(state.bears).toBe(0);
         render(() => {
+            const [state] = createStore(store);
+            expect(state.bears).toBe(0);
             state.increase();
             state.increase();
             return <span>{state.bears}</span>
