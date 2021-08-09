@@ -14,7 +14,7 @@ Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
 
 ```jsx
 import create from 'zustand/vanilla'
-import { createStore } from 'solid-zustand'
+import useStore from 'solid-zustand'
 
 interface BearState {
   bears: number
@@ -27,12 +27,12 @@ const store = create<BearState>(set => ({
 }))
 
 function BearCounter() {
-  const [state] = createStore(store)
+  const [state] = useStore(store)
   return <h1>{state.bears} around here ...</h1>
 }
 
 function Controls() {
-  const [state, setState] = createStore(store)
+  const [state, setState] = useStore(store)
   return (
     <>
       <button onClick={state.increase}>one up</button>
