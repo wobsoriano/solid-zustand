@@ -4,11 +4,13 @@ import create from '../src';
 interface BearState {
     bears: number;
     increase: () => void;
+    decrease: () => void;
 }
 
 const useStore = create<BearState>(set => ({
     bears: 0,
-    increase: () => set(state => ({ bears: state.bears + 1 }))
+    increase: () => set(state => ({ bears: state.bears + 1 })),
+    decrease: () => set(state => ({ bears: state.bears - 1 }))
 }));
 
 describe('Testing useStore', () => {
@@ -28,8 +30,9 @@ describe('Testing useStore', () => {
             increase();
             increase();
             increase();
+            state.decrease();
             return <span>{state.bears}</span>
         }, div);
-        expect(div.innerHTML).toBe('<span>3</span>');
+        expect(div.innerHTML).toBe('<span>2</span>');
     })
 })
