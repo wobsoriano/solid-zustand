@@ -56,12 +56,14 @@ const useStore = create(set => ({
   },
 }))
 const bears = useStore(state => state.bears)
+// <div>{bears.count}</div>
 
 // Doesn't
 const useStore = create(set => ({
   bears: 0,
 }))
-const bears = useStore(state => state.bears)
+const count = useStore(state => state.bears)
+// <div>{count}</div> Always 0
 ```
 
 ## License
