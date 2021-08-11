@@ -23,11 +23,13 @@ describe('Testing useStore', () => {
         const div = document.createElement('div');
         render(() => {
             const state = useStore();
+            const increase = useStore(state => state.increase);
             expect(state.bears).toBe(0);
-            state.increase();
-            state.increase();
+            increase();
+            increase();
+            increase();
             return <span>{state.bears}</span>
         }, div);
-        expect(div.innerHTML).toBe('<span>2</span>');
+        expect(div.innerHTML).toBe('<span>3</span>');
     })
 })
