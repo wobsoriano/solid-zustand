@@ -44,6 +44,30 @@ function Controls() {
 }
 ```
 
+## Selecting multiple state slices
+
+Since `solid-zustand` uses [createStore](https://www.solidjs.com/docs/latest/api#createstore) to track changes, state slices will only work with arrays and plain objects.
+
+Works
+
+```ts
+const useStore = create(set => ({
+  bears: {
+    count: 0
+  },
+}))
+const bears = useStore(state => state.bears)
+```
+
+Doesn't work
+
+```ts
+const useStore = create(set => ({
+  bears: 0,
+}))
+const bears = useStore(state => state.bears)
+```
+
 ## License
 
 MIT License © 2021 [Robert Soriano](https://github.com/wobsoriano)
