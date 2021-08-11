@@ -54,16 +54,20 @@ const useStore = create(set => ({
   bears: {
     count: 0
   },
+  bulls: {
+    list: []
+  }
 }))
-const bears = useStore(state => state.bears)
-// <div>{bears.count}</div>
+const bears = useStore(state => state.bears) // <div>{bears.count}</div>
+const bulls = useStore(state => state.bulls) // <For each={bulls.list}>...</For>
 
 // Doesn't
 const useStore = create(set => ({
   bears: 0,
+  bulls: []
 }))
-const count = useStore(state => state.bears)
-// <div>{count}</div> Always 0
+const count = useStore(state => state.bears) // <div>{count}</div> Always 0
+const bulls = useStore(state => state.bulls)
 ```
 
 Multiple state-picks also works
