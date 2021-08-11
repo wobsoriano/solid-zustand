@@ -66,6 +66,18 @@ const count = useStore(state => state.bears)
 // <div>{count}</div> Always 0
 ```
 
+Multiple state-picks also works
+
+```ts
+import { shallow } from 'solid-zustand'
+
+// Object pick, either state.bears or state.bulls change
+const { bears, bulls } = useStore(state => ({ bears: state.bears, bulls: state.bulls }), shallow)
+
+// Array pick, either state.bears or state.bulls change
+const [bears, bulls] = useStore(state => [state.bears, state.bulls], shallow)
+```
+
 ## License
 
 MIT License © 2021 [Robert Soriano](https://github.com/wobsoriano)
