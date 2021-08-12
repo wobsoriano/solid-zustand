@@ -1,6 +1,6 @@
 {
   "name": "solid-zustand",
-  "description": "Zustand state management for Solid.",
+  "description": "🐻 State management in Solid using zustand.",
   "license": "MIT",
   "version": "1.0.9",
   "main": "dist/solid-zustand.js",
