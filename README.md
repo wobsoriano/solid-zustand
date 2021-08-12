@@ -1,6 +1,6 @@
 # solid-zustand
 
-Zustand state management for Solid.
+🐻 State management in Solid using [zustand](https://github.com/pmndrs/zustand).
 
 ## Install
 
