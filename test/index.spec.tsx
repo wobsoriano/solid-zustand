@@ -35,7 +35,7 @@ it('should function correct when rendering in Solid', () => {
     expect(div.innerHTML).toBe('<span>2</span>');
 })
 
-it('should allow state multiple state slices', () => {
+it('should allow multiple state slices', () => {
     const useStore = create<{ bears: { count: number }, bulls: { count: number } }>(() => ({
         bears: {
             count: 0
