@@ -1,6 +1,13 @@
 {
   "name": "solid-zustand",
   "description": "🐻 State management in Solid using zustand.",
+  "keywords": [
+    "solid",
+    "state",
+    "manager",
+    "management",
+    "store"
+  ],
   "license": "MIT",
   "version": "1.0.9",
   "main": "dist/solid-zustand.js",
