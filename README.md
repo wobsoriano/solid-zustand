@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-yarn add solid-zustand
+yarn add solid-zustand zustand
 ```
 
 Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
