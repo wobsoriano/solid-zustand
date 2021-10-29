@@ -1,5 +1,6 @@
 import { render } from 'solid-js/web'
-import create, { shallow } from '../src';
+import create from '../src';
+import shallow from 'zustand/shallow'
 
 interface BearState {
     bears: number;

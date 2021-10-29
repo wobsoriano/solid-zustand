@@ -73,7 +73,7 @@ const bulls = useStore(state => state.bulls)
 Multiple state-picks also works
 
 ```ts
-import { shallow } from 'solid-zustand'
+import shallow from 'zustand/shallow'
 
 // Object pick, either state.bears or state.bulls change
 const { bears, bulls } = useStore(state => ({ bears: state.bears, bulls: state.bulls }), shallow)
