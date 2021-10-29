@@ -1,33 +1,33 @@
 import { createStore, reconcile } from 'solid-js/store';
 import { onCleanup } from 'solid-js';
 import createImpl, {
-  StateCreator,
+  EqualityChecker,
+  GetState,
   SetState,
   State,
-  StoreApi,
-  GetState,
-  Subscribe,
-  Destroy,
+  StateCreator,
   StateSelector,
-  EqualityChecker,
+  StoreApi,
 } from 'zustand/vanilla';
 
-export interface UseStore<T extends State> {
-  (): T;
-  <U>(selector: StateSelector<T, U>, equalityFn?: EqualityChecker<U>): U;
-  setState: SetState<T>;
-  getState: GetState<T>;
-  subscribe: Subscribe<T>;
-  destroy: Destroy;
-}
+export type UseBoundStore<
+  T extends State,
+  CustomStoreApi extends StoreApi<T> = StoreApi<T>
+> = {
+  (): T
+  <U>(selector: StateSelector<T, U>, equalityFn?: EqualityChecker<U>): U
+} & CustomStoreApi
 
-export {
-  default as shallow
-} from 'zustand/shallow';
-
-export default function create<TState extends State>(
-  createState: StateCreator<TState> | StoreApi<TState>
-): UseStore<TState> {
+export default function create<
+  TState extends State,
+  CustomSetState = SetState<TState>,
+  CustomGetState = GetState<TState>,
+  CustomStoreApi extends StoreApi<TState> = StoreApi<TState>
+>(
+  createState:
+    | StateCreator<TState, CustomSetState, CustomGetState, CustomStoreApi>
+    | CustomStoreApi
+): UseBoundStore<TState, CustomStoreApi> {
   const api: StoreApi<TState> =
     typeof createState === 'function' ? createImpl(createState) : createState;
 
@@ -35,11 +35,23 @@ export default function create<TState extends State>(
     selector: StateSelector<TState, StateSlice> = api.getState as any,
     equalityFn: EqualityChecker<StateSlice> = Object.is
   ) => {
-    const initialValue = selector(api.getState())
+    const initialValue = selector(api.getState());
     const [state, setState] = createStore(initialValue);
-    const unsubscribe = api.subscribe((newState) => {
-      setState(reconcile(newState));
-    }, selector, equalityFn);
+    
+    const listener = () => {
+      const nextState = api.getState();
+      const nextStateSlice = selector(nextState);
+
+      try {
+        if (!equalityFn(state, nextStateSlice)) {
+          setState(reconcile(nextStateSlice));
+        }
+      } catch (e) {
+        setState(reconcile(nextStateSlice));
+      }
+    }
+
+    const unsubscribe = api.subscribe(listener);
     onCleanup(() => unsubscribe());
     return state;
   }
