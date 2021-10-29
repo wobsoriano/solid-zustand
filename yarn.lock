@@ -3850,10 +3850,10 @@ solid-jest@^0.1.1:
     babel-jest "^26.6.3"
     enhanced-resolve-jest "^1.1.0"
 
-solid-js@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.0.0.tgz#4bbc3f3932c604e2bfcd35d5a7f20408d208288e"
-  integrity sha512-5huTDVyMqZSjg5Sa4mwl15feK4il1cE68n4weL5NYGC8lX2wiDlcHhBdSB8trKgaJ50Q9/pwtLrQngFaDC+5Tw==
+solid-js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.2.0.tgz#d6e85d4455e5a3cabffede3f1f6be0c48428ecdc"
+  integrity sha512-4zi7Ip+wH0ctZIiQkDPC9of4v9TDYK33/4oqn2cu7wHfBjWElk8wnwSwlkZLkmtr9VYbsEfrroXsNH1mKJdJFg==
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
