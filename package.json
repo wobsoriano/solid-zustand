@@ -9,7 +9,7 @@
     "zustand"
   ],
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/solid-zustand.js",
   "module": "dist/solid-zustand.mjs",
   "typings": "dist/solid-zustand.d.ts",
