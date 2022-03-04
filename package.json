@@ -10,26 +10,31 @@
   ],
   "license": "MIT",
   "version": "1.2.0",
-  "main": "dist/solid-zustand.js",
-  "module": "dist/solid-zustand.mjs",
-  "typings": "dist/solid-zustand.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest"
+    "build-fast": "tsup src/index.ts --format cjs,esm",
+    "build": "pnpm run build-fast -- --dts-resolve",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm run build",
+    "format": "prettier --write src",
+    "lint": "prettier --check src",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.13.0",
-    "@types/jest": "^26.0.23",
-    "babel-preset-solid": "^1.0.0",
-    "esbuild": "^0.12.15",
-    "jest": "^26.6.3",
-    "rollup": "^2.52.8",
-    "rollup-plugin-dts": "^3.0.2",
-    "rollup-plugin-esbuild": "^4.5.0",
-    "solid-jest": "^0.1.1",
-    "solid-js": "^1.2.0",
-    "typescript": "^4.3.5",
-    "zustand": "^3.6.1"
+    "@egoist/prettier-config": "^1.0.0",
+    "husky": "^7.0.4",
+    "jsdom": "^19.0.0",
+    "prettier": "^2.5.1",
+    "tsup": "^5.11.13",
+    "typescript": "4.5.4",
+    "vite-plugin-solid": "^2.2.5",
+    "vitest": "^0.5.9"
   },
   "files": [
     "dist"
@@ -39,9 +44,10 @@
     "url": "https://github.com/wobsoriano/solid-zustand.git"
   },
   "peerDependencies": {
-    "zustand": "^3.6.0"
+    "zustand": ">=3.6.0"
   },
-  "jest": {
-    "preset": "solid-jest/preset/browser"
+  "dependencies": {
+    "solid-js": "^1.3.10",
+    "zustand": ">=3.6.0"
   }
 }
