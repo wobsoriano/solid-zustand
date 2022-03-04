@@ -22,8 +22,8 @@
     "build": "pnpm run build-fast -- --dts-resolve",
     "test": "vitest run",
     "prepublishOnly": "pnpm run build",
-    "format": "prettier --write src",
-    "lint": "prettier --check src",
+    "format": "prettier --write src test",
+    "lint": "prettier --check src test",
     "prepare": "husky install"
   },
   "devDependencies": {
