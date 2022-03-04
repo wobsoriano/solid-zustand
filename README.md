@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-yarn add solid-zustand zustand
+pnpm add zustand solid-zustand
 ```
 
 Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
@@ -50,36 +50,39 @@ Since `solid-zustand` uses [createStore](https://www.solidjs.com/docs/latest/api
 
 ```ts
 // Works
-const useStore = create(set => ({
+const useStore = create((set) => ({
   bears: {
-    count: 0
+    count: 0,
   },
   bulls: {
-    list: []
-  }
+    list: [],
+  },
 }))
-const bears = useStore(state => state.bears) // <div>{bears.count}</div>
-const bulls = useStore(state => state.bulls) // <For each={bulls.list}>...</For>
+const bears = useStore((state) => state.bears) // <div>{bears.count}</div>
+const bulls = useStore((state) => state.bulls) // <For each={bulls.list}>...</For>
 
 // Doesn't
-const useStore = create(set => ({
+const useStore = create((set) => ({
   bears: 0,
-  bulls: []
+  bulls: [],
 }))
-const count = useStore(state => state.bears) // <div>{count}</div> Always 0
-const bulls = useStore(state => state.bulls)
+const count = useStore((state) => state.bears) // <div>{count}</div> Always 0
+const bulls = useStore((state) => state.bulls)
 ```
 
 Multiple state-picks also works
 
 ```ts
-import shallow from 'zustand/shallow'
+import shallow from "zustand/shallow"
 
 // Object pick, either state.bears or state.bulls change
-const { bears, bulls } = useStore(state => ({ bears: state.bears, bulls: state.bulls }), shallow)
+const { bears, bulls } = useStore(
+  (state) => ({ bears: state.bears, bulls: state.bulls }),
+  shallow,
+)
 
 // Array pick, either state.bears or state.bulls change
-const [bears, bulls] = useStore(state => [state.bears, state.bulls], shallow)
+const [bears, bulls] = useStore((state) => [state.bears, state.bulls], shallow)
 ```
 
 ## License
