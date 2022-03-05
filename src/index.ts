@@ -1,6 +1,6 @@
-import { createStore, reconcile } from "solid-js/store"
-import { onCleanup } from "solid-js"
-import createImpl, {
+import { createStore, reconcile } from 'solid-js/store'
+import { onCleanup } from 'solid-js'
+import type {
   EqualityChecker,
   GetState,
   SetState,
@@ -8,7 +8,8 @@ import createImpl, {
   StateCreator,
   StateSelector,
   StoreApi,
-} from "zustand/vanilla"
+} from 'zustand/vanilla'
+import createImpl from 'zustand/vanilla'
 
 type UseBoundStore<
   T extends State,
@@ -25,11 +26,11 @@ export default function create<
   CustomStoreApi extends StoreApi<TState> = StoreApi<TState>,
 >(
   createState:
-    | StateCreator<TState, CustomSetState, CustomGetState, CustomStoreApi>
-    | CustomStoreApi,
+  | StateCreator<TState, CustomSetState, CustomGetState, CustomStoreApi>
+  | CustomStoreApi,
 ): UseBoundStore<TState, CustomStoreApi> {
-  const api: StoreApi<TState> =
-    typeof createState === "function" ? createImpl(createState) : createState
+  const api: StoreApi<TState>
+    = typeof createState === 'function' ? createImpl(createState) : createState
 
   const useStore: any = <StateSlice>(
     selector: StateSelector<TState, StateSlice> = api.getState as any,
@@ -43,11 +44,11 @@ export default function create<
       const nextStateSlice = selector(nextState)
 
       try {
-        // @ts-ignore
-        if (!equalityFn(state, nextStateSlice)) {
+        // @ts-expect-error: Incompatible types
+        if (!equalityFn(state, nextStateSlice))
           setState(reconcile(nextStateSlice))
-        }
-      } catch (e) {
+      }
+      catch (e) {
         setState(reconcile(nextStateSlice))
       }
     }

@@ -1,7 +1,7 @@
-import { render } from "solid-js/web"
-import create from "../src"
-import shallow from "zustand/shallow"
-import { it, expect } from "vitest"
+import { render } from 'solid-js/web'
+import shallow from 'zustand/shallow'
+import { expect, it } from 'vitest'
+import create from '../src'
 
 interface BearState {
   bears: number
@@ -9,24 +9,24 @@ interface BearState {
   decrease: () => void
 }
 
-const useStore = create<BearState>((set) => ({
+const useStore = create<BearState>(set => ({
   bears: 0,
-  increase: () => set((state) => ({ bears: state.bears + 1 })),
-  decrease: () => set((state) => ({ bears: state.bears - 1 })),
+  increase: () => set(state => ({ bears: state.bears + 1 })),
+  decrease: () => set(state => ({ bears: state.bears - 1 })),
 }))
 
-it("should return default zustand properties", () => {
-  expect(typeof useStore.setState).toBe("function")
-  expect(typeof useStore.getState).toBe("function")
-  expect(typeof useStore.subscribe).toBe("function")
-  expect(typeof useStore.destroy).toBe("function")
+it('should return default zustand properties', () => {
+  expect(typeof useStore.setState).toBe('function')
+  expect(typeof useStore.getState).toBe('function')
+  expect(typeof useStore.subscribe).toBe('function')
+  expect(typeof useStore.destroy).toBe('function')
 })
 
-it("should function correct when rendering in Solid", () => {
-  const div = document.createElement("div")
+it('should function correct when rendering in Solid', () => {
+  const div = document.createElement('div')
   render(() => {
     const state = useStore()
-    const increase = useStore((state) => state.increase)
+    const increase = useStore(state => state.increase)
     expect(state.bears).toBe(0)
     increase()
     increase()
@@ -34,10 +34,10 @@ it("should function correct when rendering in Solid", () => {
     state.decrease()
     return <span>{state.bears}</span>
   }, div)
-  expect(div.innerHTML).toBe("<span>2</span>")
+  expect(div.innerHTML).toBe('<span>2</span>')
 })
 
-it("should allow multiple state slices", () => {
+it('should allow multiple state slices', () => {
   const useStore = create<{
     bears: { count: number }
     bulls: { count: number }
@@ -49,12 +49,12 @@ it("should allow multiple state slices", () => {
       count: 0,
     },
   }))
-  const div = document.createElement("div")
+  const div = document.createElement('div')
   render(() => {
-    const [bears] = useStore((state) => [state.bears, state.bulls], shallow)
+    const [bears] = useStore(state => [state.bears, state.bulls], shallow)
     useStore.setState(({ bears }) => ({ bears: { count: bears.count + 1 } }))
     useStore.setState(({ bears }) => ({ bears: { count: bears.count + 1 } }))
     return <span>{bears.count}</span>
   }, div)
-  expect(div.innerHTML).toBe("<span>2</span>")
+  expect(div.innerHTML).toBe('<span>2</span>')
 })
