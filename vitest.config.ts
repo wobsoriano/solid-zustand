@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config'
 import solid from 'vite-plugin-solid'
-console.log(123)
+
 export default defineConfig({
   test: {
     environment: 'jsdom',
