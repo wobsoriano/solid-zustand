@@ -87,4 +87,4 @@ const [bears, bulls] = useStore((state) => [state.bears, state.bulls], shallow)
 
 ## License
 
-MIT License © 2021 [Robert Soriano](https://github.com/wobsoriano)
+MIT

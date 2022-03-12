@@ -1,5 +1,6 @@
 {
   "name": "solid-zustand",
+  "version": "1.2.4",
   "description": "🐻 State management in Solid using zustand.",
   "keywords": [
     "solid",
@@ -9,19 +10,37 @@
     "zustand"
   ],
   "license": "MIT",
-  "version": "1.2.4",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wobsoriano/solid-zustand.git"
+  },
+  "files": [
+    "dist"
+  ],
   "exports": {
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "prepublishOnly": "pnpm run build"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "peerDependencies": {
+    "zustand": "^3.6.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.3.10",
+    "zustand": "^3.7.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.16.1",
@@ -35,20 +54,6 @@
     "vite-plugin-solid": "^2.2.5",
     "vitest": "^0.5.9"
   },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wobsoriano/solid-zustand.git"
-  },
-  "peerDependencies": {
-    "zustand": "^3.6.0"
-  },
-  "dependencies": {
-    "solid-js": "^1.3.10",
-    "zustand": "^3.7.1"
-  },
   "eslintConfig": {
     "extends": "@antfu"
   },
@@ -57,10 +62,5 @@
   ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ]
   }
 }
