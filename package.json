@@ -14,26 +14,23 @@
     "type": "git",
     "url": "https://github.com/wobsoriano/solid-zustand.git"
   },
-  "files": [
-    "dist"
-  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
     "release": "bumpp --commit --push --tag && pnpm publish",
+    "lint": "eslint --ext=js,ts,jsx,tsx .",
+    "lint:fix": "eslint --ext=js,ts,jsx,tsx . --fix",
     "prepublishOnly": "pnpm run build"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ]
   },
   "peerDependencies": {
     "zustand": "^3.6.0"
@@ -43,16 +40,21 @@
     "zustand": "^3.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.16.1",
+    "@antfu/eslint-config": "^0.18.8",
     "bumpp": "^7.1.1",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "jsdom": "^19.0.0",
     "lint-staged": "^12.3.5",
     "simple-git-hooks": "^2.7.0",
-    "tsup": "^5.11.13",
+    "tsup": "^5.12.1",
     "typescript": "4.5.4",
     "vite-plugin-solid": "^2.2.5",
     "vitest": "^0.5.9"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ]
   },
   "eslintConfig": {
     "extends": "@antfu"

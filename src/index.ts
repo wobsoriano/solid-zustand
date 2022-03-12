@@ -48,9 +48,7 @@ export default function create<
         if (!equalityFn(state, nextStateSlice))
           setState(reconcile(nextStateSlice))
       }
-      catch (e) {
-        setState(reconcile(nextStateSlice))
-      }
+      catch (e) {}
     }
 
     const unsubscribe = api.subscribe(listener)
