@@ -1,7 +1,7 @@
 import { render } from 'solid-js/web'
 import shallow from 'zustand/shallow'
 import { beforeEach, describe, expect, it } from 'vitest'
-import create from '../src'
+import create from '../../dist'
 
 interface BearState {
   bears: { count: number }
