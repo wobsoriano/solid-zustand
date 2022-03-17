@@ -9,7 +9,7 @@ import type {
   StateSelector,
   StoreApi,
 } from 'zustand/vanilla'
-import createImpl from 'zustand/vanilla'
+import createZustandStore from 'zustand/vanilla'
 
 type UseBoundStore<
   T extends State,
@@ -19,18 +19,35 @@ type UseBoundStore<
   <U>(selector: StateSelector<T, U>, equalityFn?: EqualityChecker<U>): U
 } & CustomStoreApi
 
-export default function create<
+function create<
   TState extends State,
-  CustomSetState = SetState<TState>,
-  CustomGetState = GetState<TState>,
-  CustomStoreApi extends StoreApi<TState> = StoreApi<TState>,
+  CustomSetState,
+  CustomGetState,
+  CustomStoreApi extends StoreApi<TState>,
+>(
+  createState:
+  | StateCreator<TState, CustomSetState, CustomGetState, CustomStoreApi>
+  | CustomStoreApi
+): UseBoundStore<TState, CustomStoreApi>
+
+function create<TState extends State>(
+  createState:
+  | StateCreator<TState, SetState<TState>, GetState<TState>, any>
+  | StoreApi<TState>
+): UseBoundStore<TState, StoreApi<TState>>
+
+function create<
+  TState extends State,
+  CustomSetState,
+  CustomGetState,
+  CustomStoreApi extends StoreApi<TState>,
 >(
   createState:
   | StateCreator<TState, CustomSetState, CustomGetState, CustomStoreApi>
   | CustomStoreApi,
 ): UseBoundStore<TState, CustomStoreApi> {
-  const api: StoreApi<TState>
-    = typeof createState === 'function' ? createImpl(createState) : createState
+  const api: CustomStoreApi
+    = typeof createState === 'function' ? createZustandStore(createState) : createState
 
   const useStore: any = <StateSlice>(
     selector: StateSelector<TState, StateSlice> = api.getState as any,
@@ -44,9 +61,10 @@ export default function create<
       const nextStateSlice = selector(nextState)
 
       try {
-        // @ts-expect-error: Incompatible types
-        if (!equalityFn(state, nextStateSlice))
+        if (!equalityFn(state, nextStateSlice)) {
+          // @ts-expect-error: types
           setState(reconcile(nextStateSlice))
+        }
       }
       catch (e) {}
     }
@@ -60,3 +78,5 @@ export default function create<
 
   return useStore
 }
+
+export default create
