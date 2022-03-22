@@ -41,9 +41,10 @@
     "zustand": "^3.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.18.8",
+    "@antfu/eslint-config-ts": "^0.18.9",
     "bumpp": "^7.1.1",
     "eslint": "^8.11.0",
+    "eslint-plugin-solid": "^0.4.4",
     "jsdom": "^19.0.0",
     "lint-staged": "^12.3.5",
     "simple-git-hooks": "^2.7.0",
@@ -58,11 +59,13 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@antfu"
+    "plugins": ["solid"],
+    "extends": ["plugin:solid/typescript", "@antfu/eslint-config-ts"],
+    "rules": {
+      "semi": [2, "always"],
+      "@typescript-eslint/semi": [2, "always"]
+    }
   },
-  "eslintIgnore": [
-    "dist"
-  ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   }

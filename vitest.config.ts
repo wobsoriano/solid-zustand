@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config'
-import solid from 'vite-plugin-solid'
+import { defineConfig } from 'vitest/config';
+import solid from 'vite-plugin-solid';
 
 export default defineConfig({
   test: {
@@ -17,4 +17,4 @@ export default defineConfig({
   resolve: {
     conditions: ['development', 'browser'],
   },
-})
+});
