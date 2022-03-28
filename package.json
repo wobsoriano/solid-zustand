@@ -37,6 +37,10 @@
     "prepublishOnly": "rimraf ./package && pnpm run build && clean-publish",
     "postpublish": "rimraf ./package"
   },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "package"
+  },
   "peerDependencies": {
     "zustand": "^3.6.0"
   },
