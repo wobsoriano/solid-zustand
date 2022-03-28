@@ -11,7 +11,7 @@ import type {
 } from 'zustand/vanilla';
 import createZustandStore from 'zustand/vanilla';
 
-type UseBoundStore<
+export type UseBoundStore<
   T extends State,
   CustomStoreApi extends StoreApi<T> = StoreApi<T>,
 > = {
