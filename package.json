@@ -38,6 +38,7 @@
     "postpublish": "rimraf ./package"
   },
   "clean-publish": {
+    "cleanDocs": true,
     "withoutPublish": true,
     "tempDir": "package"
   },
