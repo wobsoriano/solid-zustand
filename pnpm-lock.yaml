@@ -3,10 +3,12 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config-ts': ^0.18.9
   bumpp: ^7.1.1
+  clean-publish: ^4.0.0
   eslint: ^8.11.0
   eslint-plugin-solid: ^0.4.4
   jsdom: ^19.0.0
   lint-staged: ^12.3.5
+  rimraf: ^3.0.2
   simple-git-hooks: ^2.7.0
   solid-js: ^1.3.10
   tsup: ^5.12.1
@@ -22,10 +24,12 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config-ts': 0.18.9_eslint@8.11.0+typescript@4.5.4
   bumpp: 7.1.1
+  clean-publish: 4.0.0
   eslint: 8.11.0
   eslint-plugin-solid: 0.4.4_eslint@8.11.0+typescript@4.5.4
   jsdom: 19.0.0
   lint-staged: 12.3.6
+  rimraf: 3.0.2
   simple-git-hooks: 2.7.0
   tsup: 5.12.1_typescript@4.5.4
   typescript: 4.5.4
@@ -964,6 +968,16 @@ packages:
 
   /ci-info/3.3.0:
     resolution: {integrity: sha512-riT/3vI5YpVH6/qomlDnJow6TBee2PBKSEpx3O32EGPYbWGIRsIlGRms3Sm74wYE1JMo8RnO04Hb12+v1J5ICw==}
+    dev: true
+
+  /clean-publish/4.0.0:
+    resolution: {integrity: sha512-PcOxJSnPgncx/ANmgPw8hj9DDtdLHTxIc6Vh/yXCX7IA9w1oUSx2POL0Vno/7omhyrKxMKTpnRh2wlzwH5zaCw==}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      fast-glob: 3.2.11
+      lilconfig: 2.0.4
+      micromatch: 4.0.4
     dev: true
 
   /clean-regexp/1.0.0:
