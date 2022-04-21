@@ -3,6 +3,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "esModuleInterop": true,
     "strict": true,
     "noImplicitOverride": true,
