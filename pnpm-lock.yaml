@@ -17,10 +17,6 @@ specifiers:
   vitest: ^0.7.0
   zustand: 4.0.0-rc.1
 
-dependencies:
-  solid-js: 1.3.17
-  zustand: 4.0.0-rc.1
-
 devDependencies:
   '@antfu/eslint-config-ts': 0.20.6_jzhokl4shvj5szf5bgr66kln2a
   bumpp: 7.1.1
@@ -31,10 +27,12 @@ devDependencies:
   lint-staged: 12.3.6
   rimraf: 3.0.2
   simple-git-hooks: 2.7.0
+  solid-js: 1.3.17
   tsup: 5.12.6_typescript@4.6.3
   typescript: 4.6.3
   vite-plugin-solid: 2.2.6
   vitest: 0.7.0_jsdom@19.0.0
+  zustand: 4.0.0-rc.1
 
 packages:
 
@@ -3326,6 +3324,7 @@ packages:
 
   /solid-js/1.3.17:
     resolution: {integrity: sha512-BFCosxa4hRm+LF7S+kBL5bNr4RtuZif6AaR5FdQkBpV1E6QNLAOFm4HWgEN8vL2aCWEKl384cT8Etw8ziW8aag==}
+    dev: true
 
   /solid-refresh/0.4.0_solid-js@1.3.17:
     resolution: {integrity: sha512-5XCUz845n/sHPzKK2i2G2EeV61tAmzv6SqzqhXcPaYhrgzVy7nKTQaBpKK8InKrriq9Z2JFF/mguIU00t/73xw==}
@@ -3710,7 +3709,7 @@ packages:
     resolution: {integrity: sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dev: false
+    dev: true
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
@@ -3933,4 +3932,4 @@ packages:
         optional: true
     dependencies:
       use-sync-external-store: 1.1.0
-    dev: false
+    dev: true
