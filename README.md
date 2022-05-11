@@ -21,15 +21,13 @@ interface BearState {
 }
 
 const useStore = create<BearState>(set => ({
-  bears: {
-    count: 0,
-  },
-  increase: () => set(state => ({ bears: state.bears.count + 1 }))
+  bears: 0,
+  increase: () => set(state => ({ bears: state.bears + 1 }))
 }))
 
 function BearCounter() {
   const state = useStore()
-  return <h1>{state.bears.count} around here ...</h1>
+  return <h1>{state.bears} around here ...</h1>
 }
 
 function Controls() {
@@ -38,7 +36,7 @@ function Controls() {
     <>
       <button onClick={state.increase}>one up</button>
       {/* Or */}
-      <button onClick={() => useStore.setState((prev) => ({ bears: prev.bears.count + 1 }))}>
+      <button onClick={() => useStore.setState((prev) => ({ bears: prev.bears + 1 }))}>
         one up
       </button>
     </>
