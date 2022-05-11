@@ -21,8 +21,10 @@ interface BearState {
 }
 
 const useStore = create<BearState>(set => ({
-  bears: 0,
-  increase: () => set(state => ({ bears: state.bears + 1 }))
+  bears: {
+    count: 0,
+  },
+  increase: () => set(state => ({ bears: state.bears.count + 1 }))
 }))
 
 function BearCounter() {
