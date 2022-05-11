@@ -29,7 +29,7 @@ const useStore = create<BearState>(set => ({
 
 function BearCounter() {
   const state = useStore()
-  return <h1>{state.bears} around here ...</h1>
+  return <h1>{state.bears.count} around here ...</h1>
 }
 
 function Controls() {
