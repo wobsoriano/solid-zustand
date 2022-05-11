@@ -1,3 +1,4 @@
+import type { DeepReadonly } from 'solid-js/store';
 import { createStore, reconcile } from 'solid-js/store';
 import { onCleanup } from 'solid-js';
 import type {
@@ -30,14 +31,11 @@ export function useStore<TState extends State, StateSlice>(
     const nextStateSlice = selector(nextState);
 
     if (equalityFn !== undefined) {
-      if (!equalityFn(state, nextStateSlice)) {
-        // @ts-expect-error: Internal types
-        setState(reconcile(nextStateSlice));
-      }
+      if (!equalityFn(state as StateSlice, nextStateSlice))
+        setState(reconcile(nextStateSlice as DeepReadonly<StateSlice>));
     }
     else {
-      // @ts-expect-error: Internal types
-      setState(reconcile(nextStateSlice));
+      setState(reconcile(nextStateSlice as DeepReadonly<StateSlice>));
     }
   };
 
