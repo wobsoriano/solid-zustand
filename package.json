@@ -33,7 +33,7 @@
     "test:watch": "vitest watch",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "lint": "eslint --ext=js,ts,jsx,tsx .",
-    "lint:fix": "eslint --ext=js,ts,jsx,tsx . --fix",
+    "lint:fix": "pnpm run lint --fix",
     "prepublishOnly": "rimraf ./package && pnpm run build && clean-publish",
     "postpublish": "rimraf ./package"
   },
@@ -46,8 +46,8 @@
     "zustand": "^4.0.0-rc.0"
   },
   "dependencies": {
-    "solid-js": "^1.3.10",
-    "zustand": "^4.0.0-rc.0"
+    "solid-js": "^1.3.17",
+    "zustand": "4.0.0-rc.1"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.20.6",
