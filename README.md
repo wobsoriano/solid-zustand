@@ -46,28 +46,22 @@ function Controls() {
 
 ## Selecting multiple state slices
 
-Since `solid-zustand` uses [createStore](https://www.solidjs.com/docs/latest/api#createstore) to track changes, state slices only works on arrays and plain objects.
+Since `solid-zustand` uses [createStore](https://www.solidjs.com/docs/latest/api#createstore) to store updates from zustand, state slices only works on plain objects and arrays (as of [v1.4.0](https://github.com/solidjs/solid/releases/tag/v1.4.0)).
 
 ```ts
 // Do this
 const useStore = create(set => ({
   bears: {
     count: 0,
-  },
-  bulls: {
-    list: [],
-  },
+  }
 }));
 const bears = useStore(state => state.bears); // <div>{bears.count}</div>
-const bulls = useStore(state => state.bulls); // <For each={bulls.list}>...</For>
 
 // Don't
 const useStore = create(set => ({
-  bears: 0,
-  bulls: [],
+  bears: 0
 }));
 const count = useStore(state => state.bears); // <div>{count}</div> Always 0
-const bulls = useStore(state => state.bulls);
 ```
 
 Multiple state-picks also works
