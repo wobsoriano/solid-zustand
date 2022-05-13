@@ -10,10 +10,10 @@ specifiers:
   lint-staged: ^12.3.5
   rimraf: ^3.0.2
   simple-git-hooks: ^2.7.0
-  solid-js: ^1.3.17
+  solid-js: ^1.4.0
   tsup: ^5.12.6
   typescript: 4.6.3
-  vite-plugin-solid: ^2.2.5
+  vite-plugin-solid: ^2.2.6
   vitest: ^0.7.0
   zustand: 4.0.0-rc.1
 
@@ -27,7 +27,7 @@ devDependencies:
   lint-staged: 12.3.6
   rimraf: 3.0.2
   simple-git-hooks: 2.7.0
-  solid-js: 1.3.17
+  solid-js: 1.4.0
   tsup: 5.12.6_typescript@4.6.3
   typescript: 4.6.3
   vite-plugin-solid: 2.2.6
@@ -3322,11 +3322,11 @@ packages:
       is-fullwidth-code-point: 4.0.0
     dev: true
 
-  /solid-js/1.3.17:
-    resolution: {integrity: sha512-BFCosxa4hRm+LF7S+kBL5bNr4RtuZif6AaR5FdQkBpV1E6QNLAOFm4HWgEN8vL2aCWEKl384cT8Etw8ziW8aag==}
+  /solid-js/1.4.0:
+    resolution: {integrity: sha512-VV4d0JnXyBxrWntA18hYoutUNGfv/mufcJZoSUOi0+sKXES0XE2kG4f1LlnnhSU1jMAwRy9cWl/HlBv4O9odyg==}
     dev: true
 
-  /solid-refresh/0.4.0_solid-js@1.3.17:
+  /solid-refresh/0.4.0_solid-js@1.4.0:
     resolution: {integrity: sha512-5XCUz845n/sHPzKK2i2G2EeV61tAmzv6SqzqhXcPaYhrgzVy7nKTQaBpKK8InKrriq9Z2JFF/mguIU00t/73xw==}
     peerDependencies:
       solid-js: ^1.3.0
@@ -3334,7 +3334,7 @@ packages:
       '@babel/generator': 7.17.7
       '@babel/helper-module-imports': 7.16.7
       '@babel/types': 7.17.0
-      solid-js: 1.3.17
+      solid-js: 1.4.0
     dev: true
 
   /source-map-js/1.0.2:
@@ -3729,8 +3729,8 @@ packages:
       '@babel/preset-typescript': 7.16.7_@babel+core@7.17.7
       babel-preset-solid: 1.3.13_@babel+core@7.17.7
       merge-anything: 5.0.2
-      solid-js: 1.3.17
-      solid-refresh: 0.4.0_solid-js@1.3.17
+      solid-js: 1.4.0
+      solid-refresh: 0.4.0_solid-js@1.4.0
       vite: 2.8.6
     transitivePeerDependencies:
       - less
