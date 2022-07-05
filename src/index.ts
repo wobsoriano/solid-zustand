@@ -26,12 +26,12 @@ export function useStore<TState extends State, StateSlice>(
   const initialValue = selector(api.getState());
   const [state, setState] = createStore(initialValue);
 
-  const listener = () => {
-    const nextState = api.getState();
+  const listener = (nextState: TState, previousState: TState) => {
+    const prevStateSlice = selector(previousState);
     const nextStateSlice = selector(nextState);
 
     if (equalityFn !== undefined) {
-      if (!equalityFn(state as StateSlice, nextStateSlice))
+      if (!equalityFn(prevStateSlice, nextStateSlice))
         setState(reconcile(nextStateSlice as DeepReadonly<StateSlice>));
     }
     else {
