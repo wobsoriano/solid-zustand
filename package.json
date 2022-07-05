@@ -1,6 +1,6 @@
 {
   "name": "solid-zustand",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "🐻 State management in Solid using zustand.",
   "publishConfig": {
     "directory": "package"
