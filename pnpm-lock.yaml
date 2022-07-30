@@ -15,7 +15,7 @@ specifiers:
   typescript: 4.6.3
   vite-plugin-solid: ^2.2.6
   vitest: ^0.7.0
-  zustand: 4.0.0-rc.1
+  zustand: ^4.0.0
 
 devDependencies:
   '@antfu/eslint-config-ts': 0.20.6_jzhokl4shvj5szf5bgr66kln2a
@@ -32,7 +32,7 @@ devDependencies:
   typescript: 4.6.3
   vite-plugin-solid: 2.2.6
   vitest: 0.7.0_jsdom@19.0.0
-  zustand: 4.0.0-rc.1
+  zustand: 4.0.0
 
 packages:
 
@@ -3705,8 +3705,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /use-sync-external-store/1.1.0:
-    resolution: {integrity: sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ==}
+  /use-sync-external-store/1.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dev: true
@@ -3919,8 +3919,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /zustand/4.0.0-rc.1:
-    resolution: {integrity: sha512-qgcs7zLqBdHu0PuT3GW4WCIY5SgXdsv30GQMu9Qpp1BA2aS+sNS8l4x0hWuyEhjXkN+701aGWawhKDv6oWJAcw==}
+  /zustand/4.0.0:
+    resolution: {integrity: sha512-OrsfQTnRXF1LZ9/vR/IqN9ws5EXUhb149xmPjErZnUrkgxS/gAHGy2dPNIVkVvoxrVe1sIydn4JjF0dYHmGeeQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       immer: '>=9.0'
@@ -3931,5 +3931,5 @@ packages:
       react:
         optional: true
     dependencies:
-      use-sync-external-store: 1.1.0
+      use-sync-external-store: 1.2.0
     dev: true

@@ -2,26 +2,27 @@ import type { DeepReadonly } from 'solid-js/store';
 import { createStore, reconcile } from 'solid-js/store';
 import { onCleanup } from 'solid-js';
 import type {
-  EqualityChecker,
   Mutate,
-  State,
   StateCreator,
-  StateSelector,
   StoreApi,
   StoreMutatorIdentifier,
 } from 'zustand/vanilla';
 import createZustandStore from 'zustand/vanilla';
 
-export function useStore<S extends StoreApi<State>>(api: S): ExtractState<S>;
-export function useStore<S extends StoreApi<State>, U>(
+type ExtractState<S> = S extends { getState: () => infer T } ? T : never;
+
+export function useStore<S extends StoreApi>(api: S): ExtractState<S>;
+
+export function useStore<S extends StoreApi, U>(
   api: S,
-  selector: StateSelector<ExtractState<S>, U>,
-  equalityFn?: EqualityChecker<U>
+  selector: (state: ExtractState<S>) => U,
+  equalityFn?: (a: U, b: U) => boolean
 ): U;
-export function useStore<TState extends State, StateSlice>(
+
+export function useStore<TState extends object, StateSlice>(
   api: StoreApi<TState>,
-  selector: StateSelector<TState, StateSlice> = api.getState as any,
-  equalityFn?: EqualityChecker<StateSlice>,
+  selector: (state: TState) => StateSlice = api.getState as any,
+  equalityFn?: (a: StateSlice, b: StateSlice) => boolean,
 ) {
   const initialValue = selector(api.getState());
   const [state, setState] = createStore(initialValue);
@@ -44,27 +45,25 @@ export function useStore<TState extends State, StateSlice>(
   return state;
 }
 
-type ExtractState<S> = S extends { getState: () => infer T } ? T : never;
-
-export type UseBoundStore<S extends StoreApi<State>> = {
+export type UseBoundStore<S extends StoreApi> = {
   (): ExtractState<S>
   <U>(
-    selector: StateSelector<ExtractState<S>, U>,
-    equals?: EqualityChecker<U>
+    selector: (state: ExtractState<S>) => U,
+    equals?: (a: U, b: U) => boolean
   ): U
 } & S;
 
 interface Create {
-  <T extends State, Mos extends [StoreMutatorIdentifier, unknown][] = []>(
+  <T extends object, Mos extends [StoreMutatorIdentifier, unknown][] = []>(
     initializer: StateCreator<T, [], Mos>
   ): UseBoundStore<Mutate<StoreApi<T>, Mos>>
-  <T extends State>(): <Mos extends [StoreMutatorIdentifier, unknown][] = []>(
+  <T extends object>(): <Mos extends [StoreMutatorIdentifier, unknown][] = []>(
     initializer: StateCreator<T, [], Mos>
   ) => UseBoundStore<Mutate<StoreApi<T>, Mos>>
-  <S extends StoreApi<State>>(store: S): UseBoundStore<S>
+  <S extends StoreApi>(store: S): UseBoundStore<S>
 }
 
-const createImpl = <T extends State>(createState: StateCreator<T, [], []>) => {
+const createImpl = <T extends object>(createState: StateCreator<T, [], []>) => {
   const api
     = typeof createState === 'function' ? createZustandStore(createState) : createState;
 
@@ -76,7 +75,7 @@ const createImpl = <T extends State>(createState: StateCreator<T, [], []>) => {
   return useBoundStore;
 };
 
-const create = (<T extends State>(
+const create = (<T extends object>(
   createState: StateCreator<T, [], []> | undefined,
 ) => (createState ? createImpl(createState) : createImpl)) as Create;
 
