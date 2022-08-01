@@ -10,7 +10,7 @@
 pnpm add zustand solid-zustand
 ```
 
-Demo: https://codesandbox.io/s/solid-zustand-demo-dmt4r
+Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 
 ## Example
 
