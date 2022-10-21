@@ -31,7 +31,7 @@
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "release": "bumpp --commit --push --tag && pnpm publish",
+    "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint --ext=js,ts,jsx,tsx .",
     "lint:fix": "pnpm run lint --fix",
     "prepublishOnly": "rimraf ./package && pnpm run build && clean-publish",
