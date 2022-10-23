@@ -15,7 +15,7 @@ const useStore = create<BearState>(set => ({
   increase: () => set(state => ({ bears: { count: state.bears.count + 1 } })),
 }));
 
-describe('create test', () => {
+describe('create', () => {
   beforeEach(() => {
     useStore.setState({ bears: { count: 0 }, bulls: { count: 0 } });
   });
