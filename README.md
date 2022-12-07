@@ -1,6 +1,8 @@
-# solid-zustand
+<p>
+  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-zustand&background=tiles&project=%20" alt="solid-zustand">
+</p>
 
-[![npm (tag)](https://img.shields.io/npm/v/solid-zustand?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/solid-zustand) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/solid-zustand?style=flat&colorA=000000&colorB=000000) ![NPM](https://img.shields.io/npm/l/solid-zustand?style=flat&colorA=000000&colorB=000000)
+# solid-zustand
 
 🐻 State management in Solid using [zustand](https://github.com/pmndrs/zustand).
 
