@@ -3,36 +3,36 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config-ts': ^0.20.7
   bumpp: ^7.2.0
-  clean-publish: ^4.0.1
+  clean-publish: ^4.0.2
   eslint: ^8.29.0
   eslint-plugin-solid: ^0.7.4
   jsdom: ^19.0.0
   lint-staged: ^12.5.0
   rimraf: ^3.0.2
   simple-git-hooks: ^2.8.1
-  solid-js: ^1.6.3
+  solid-js: ^1.6.4
   taze: ^0.7.6
   tsup: ^5.12.9
   typescript: 4.6.3
-  vite-plugin-solid: ^2.4.0
+  vite-plugin-solid: ^2.5.0
   vitest: ^0.7.13
   zustand: ^4.1.5
 
 devDependencies:
   '@antfu/eslint-config-ts': 0.20.7_aviungpxhtz4v6pw5sugzyimeq
   bumpp: 7.2.0
-  clean-publish: 4.0.1
+  clean-publish: 4.0.2
   eslint: 8.29.0
   eslint-plugin-solid: 0.7.4_aviungpxhtz4v6pw5sugzyimeq
   jsdom: 19.0.0
   lint-staged: 12.5.0
   rimraf: 3.0.2
   simple-git-hooks: 2.8.1
-  solid-js: 1.6.3
+  solid-js: 1.6.4
   taze: 0.7.6
   tsup: 5.12.9_typescript@4.6.3
   typescript: 4.6.3
-  vite-plugin-solid: 2.4.0_solid-js@1.6.3
+  vite-plugin-solid: 2.5.0_solid-js@1.6.4
   vitest: 0.7.13_jsdom@19.0.0
   zustand: 4.1.5
 
@@ -42,7 +42,7 @@ packages:
     resolution: {integrity: sha512-hoyByceqwKirw7w3Z7gnIIZC3Wx3J484Y3L/cMpXFbr7d9ZQj2mODrirNzcJa+SM3UlpWXYvKV4RlRpFXlWgXg==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.4
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@antfu/eslint-config-basic/0.20.7_k5fvhpdqdyo4sqsanviranjowi:
@@ -204,13 +204,6 @@ packages:
 
   /@babel/helper-module-imports/7.16.0:
     resolution: {integrity: sha512-kkH7sWzKPq0xt3H1n+ghb4xEMP8k0U7XV3kkB+ZGy69kDk2ySFW1qPi06sjKzFY3t1j6XbJSqr4mF9L7CYVyhg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.20.5
-    dev: true
-
-  /@babel/helper-module-imports/7.16.7:
-    resolution: {integrity: sha512-LVtS6TqjJHFc+nYeITRo6VLXve70xmq7wPhWTqDJusJEgGmkAACWwMiTNrvfoQo6hEhFwAIixNkvB0jPXDL8Wg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.5
@@ -396,14 +389,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/types/7.17.0:
-    resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.19.1
-      to-fast-properties: 2.0.0
-    dev: true
-
   /@babel/types/7.20.5:
     resolution: {integrity: sha512-c9fst/h2/dcF7H+MJKZ2T0KjEQ8hY/BNnDk/H3XY8C4Aw/eWQXWn/lWntHF9ooUBnGmEvbfGrTgLWc+um0YDUg==}
     engines: {node: '>=6.9.0'}
@@ -459,13 +444,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       '@jridgewell/set-array': 1.1.2
-      '@jridgewell/sourcemap-codec': 1.4.11
+      '@jridgewell/sourcemap-codec': 1.4.14
       '@jridgewell/trace-mapping': 0.3.17
-    dev: true
-
-  /@jridgewell/resolve-uri/3.0.5:
-    resolution: {integrity: sha512-VPeQ7+wH0itvQxnG+lIzWgkysKIr3L9sslimFW55rHMdGu/qCQ5z5h9zq4gI8uBtqkpHhsF4Z/OwExufUCThew==}
-    engines: {node: '>=6.0.0'}
     dev: true
 
   /@jridgewell/resolve-uri/3.1.0:
@@ -478,10 +458,6 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: true
 
-  /@jridgewell/sourcemap-codec/1.4.11:
-    resolution: {integrity: sha512-Fg32GrJo61m+VqYSdRSjRXMjQ06j8YIYfcTqndLYVAaHmroZHLJZCydsWBOTDqXS2v+mjxohBWEMfg97GXmYQg==}
-    dev: true
-
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
@@ -491,13 +467,6 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
-    dev: true
-
-  /@jridgewell/trace-mapping/0.3.4:
-    resolution: {integrity: sha512-vFv9ttIedivx0ux3QSjhgtCVjPZd5l46ZOMDSCwnH1yUO2e964gO8LZGyv2QkqcgR6TnBU1v+1IFqmeoG+0UJQ==}
-    dependencies:
-      '@jridgewell/resolve-uri': 3.0.5
-      '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
   /@jsdevtools/ez-spawn/3.0.4:
@@ -1027,7 +996,7 @@ packages:
       '@babel/core': 7.20.5
       '@babel/helper-module-imports': 7.16.0
       '@babel/plugin-syntax-jsx': 7.16.7_@babel+core@7.20.5
-      '@babel/types': 7.17.0
+      '@babel/types': 7.20.5
       html-entities: 2.3.2
     dev: true
 
@@ -1245,13 +1214,13 @@ packages:
     resolution: {integrity: sha512-riT/3vI5YpVH6/qomlDnJow6TBee2PBKSEpx3O32EGPYbWGIRsIlGRms3Sm74wYE1JMo8RnO04Hb12+v1J5ICw==}
     dev: true
 
-  /clean-publish/4.0.1:
-    resolution: {integrity: sha512-6v0bh5kQD5FDlxBgXDVNNc6KmAB7iIP/GHD91q9xsGVZT5XB9Y8TNqB7dL5u9PTZlBeLpBw+A1AseRlEEJLSWA==}
+  /clean-publish/4.0.2:
+    resolution: {integrity: sha512-WLg3deN5jTs6W3JjioTywlfmFMvOFTTwkhUQ6QJ/6b4Um7pqOM5g/NivYnUFTasi3j3BARAP6HIKxGWlWPJ8hw==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       lilconfig: 2.0.6
       micromatch: 4.0.5
     dev: true
@@ -2255,6 +2224,17 @@ packages:
       micromatch: 4.0.5
     dev: true
 
+  /fast-glob/3.2.12:
+    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
+    engines: {node: '>=8.6.0'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.5
+    dev: true
+
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
     dev: true
@@ -2869,8 +2849,8 @@ packages:
       call-bind: 1.0.2
     dev: true
 
-  /is-what/4.1.7:
-    resolution: {integrity: sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==}
+  /is-what/4.1.8:
+    resolution: {integrity: sha512-yq8gMao5upkPoGEU9LsB2P+K3Kt8Q3fQFCGyNCWOAnJAMzEXVV9drYb0TXr42TTliLLhKIBvulgAXgtLLnwzGA==}
     engines: {node: '>=12.13'}
     dev: true
 
@@ -3213,12 +3193,11 @@ packages:
     resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
     dev: true
 
-  /merge-anything/5.0.2:
-    resolution: {integrity: sha512-POPQBWkBC0vxdgzRJ2Mkj4+2NTKbvkHo93ih+jGDhNMLzIw+rYKjO7949hOQM2X7DxMHH1uoUkwWFLIzImw7gA==}
+  /merge-anything/5.1.4:
+    resolution: {integrity: sha512-7PWKwGOs5WWcpw+/OvbiFiAvEP6bv/QHiicigpqMGKIqPPAtGhBLR8LFJW+Zu6m9TXiR/a8+AiPlGG0ko1ruoQ==}
     engines: {node: '>=12.13'}
     dependencies:
-      is-what: 4.1.7
-      ts-toolbelt: 9.6.0
+      is-what: 4.1.8
     dev: true
 
   /merge-stream/2.0.0:
@@ -4170,21 +4149,21 @@ packages:
       smart-buffer: 4.2.0
     dev: true
 
-  /solid-js/1.6.3:
-    resolution: {integrity: sha512-YoieThdhAKt83O86+DjpKXNlVSU5JYdi21RdYqiEIsWxahOphiAfao8e/zRTLyZEM5ZgyZ3ZHPPgW1HO5537Rw==}
+  /solid-js/1.6.4:
+    resolution: {integrity: sha512-IfJJ1ejAcRTOEB0XXk/J8tzvVNZXAdEuHtWQwTXefUteZPGWOl4aVSOrkoj3y1bjwDayqok3+Vv3TV/j4IhKyw==}
     dependencies:
       csstype: 3.1.1
     dev: true
 
-  /solid-refresh/0.4.1_solid-js@1.6.3:
+  /solid-refresh/0.4.1_solid-js@1.6.4:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
     dependencies:
       '@babel/generator': 7.20.5
-      '@babel/helper-module-imports': 7.16.7
+      '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.20.5
-      solid-js: 1.6.3
+      solid-js: 1.6.4
     dev: true
 
   /source-map-js/1.0.2:
@@ -4465,10 +4444,6 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-toolbelt/9.6.0:
-    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
-    dev: true
-
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
     dependencies:
@@ -4656,19 +4631,19 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-plugin-solid/2.4.0_solid-js@1.6.3:
-    resolution: {integrity: sha512-Rr+t2sr9TWIvH16yzBZzx6O9YSpYAvcwKUMPqbi/4iU3mRumXQ4O10i1XGtQIynC7U3XwJsMzAJigDFGbiJBiw==}
+  /vite-plugin-solid/2.5.0_solid-js@1.6.4:
+    resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
-      solid-js: ^1.3.17
-      vite: ^3.0.0
+      solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
+      vite: ^3.0.0 || ^4.0.0
     dependencies:
       '@babel/core': 7.20.5
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.5
       babel-preset-solid: 1.6.3_@babel+core@7.20.5
-      merge-anything: 5.0.2
-      solid-js: 1.6.3
-      solid-refresh: 0.4.1_solid-js@1.6.3
-      vitefu: 0.1.1
+      merge-anything: 5.1.4
+      solid-js: 1.6.4
+      solid-refresh: 0.4.1_solid-js@1.6.4
+      vitefu: 0.2.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4697,10 +4672,10 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu/0.1.1:
-    resolution: {integrity: sha512-HClD14fjMJ+NQgXBqT3dC3RdO/+Chayil+cCPYZKY3kT+KcJomKzrdgzfCHJkIL2L0OAY+VPvrSW615iPtc7ag==}
+  /vitefu/0.2.3:
+    resolution: {integrity: sha512-75l7TTuU8isAhz1QFtNKjDkqjxvndfMC1AfIMjJ0ZQ59ZD0Ow9QOIsJJX16Wv9PS8f+zMzp6fHy5cCbKG/yVUQ==}
     peerDependencies:
-      vite: ^3.0.0
+      vite: ^3.0.0 || ^4.0.0
     peerDependenciesMeta:
       vite:
         optional: true
