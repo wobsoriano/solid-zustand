@@ -44,7 +44,7 @@
     "tempDir": "package"
   },
   "peerDependencies": {
-    "solid-js": ">=1.4.0",
+    "solid-js": "^1.6.0",
     "zustand": "^4.3.0"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "lint-staged": "^12.5.0",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.8.1",
-    "solid-js": "^1.6.4",
+    "solid-js": "^1.7.5",
     "taze": "^0.7.6",
     "tsup": "^5.12.9",
     "typescript": "4.6.3",
