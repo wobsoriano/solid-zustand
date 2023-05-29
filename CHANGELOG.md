@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v2.0.0
+
+[compare changes](https://github.com/wobsoriano/solid-zustand/compare/v1.5.1...v2.0.0)
+
 ## v1.5.1
 
 [compare changes](https://github.com/wobsoriano/solid-zustand/compare/v1.5.0...v1.5.1)
