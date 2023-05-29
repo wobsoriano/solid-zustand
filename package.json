@@ -31,7 +31,7 @@
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "release": "changelogen --release && npm publish && git push --follow-tags",
+    "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "update-deps": "taze -w && pnpm i",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.39.3",
     "@babel/core": "^7.22.1",
-    "changelogen": "^0.5.3",
+    "bumpp": "^9.1.0",
     "clean-publish": "^4.2.0",
     "eslint": "^8.41.0",
     "eslint-plugin-solid": "^0.12.1",
