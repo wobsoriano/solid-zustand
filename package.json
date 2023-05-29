@@ -32,8 +32,8 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "release": "bumpp --commit --push --tag && npm publish",
-    "lint": "eslint --ext=js,ts,jsx,tsx .",
-    "lint:fix": "pnpm run lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "update-deps": "taze -w && pnpm i",
     "prepublishOnly": "rimraf ./package && pnpm run build && clean-publish",
     "postpublish": "rimraf ./package"
