@@ -6,7 +6,7 @@ import type {
   StoreApi,
   StoreMutatorIdentifier,
 } from 'zustand/vanilla';
-import createZustandStore from 'zustand/vanilla';
+import { createStore as createZustandStore } from 'zustand/vanilla';
 
 type ExtractState<S> = S extends { getState: () => infer T } ? T : never;
 
