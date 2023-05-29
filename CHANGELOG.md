@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.6.0
+
+[compare changes](https://github.com/wobsoriano/solid-zustand/compare/v1.5.1...v1.6.0)
+
+
+### 🏡 Chore
+
+  - **release:** V2.0.0 ([8d55674](https://github.com/wobsoriano/solid-zustand/commit/8d55674))
+
+### ❤️  Contributors
+
+- Wobsoriano ([@wobsoriano](http://github.com/wobsoriano))
+
 ## v2.0.0
 
 [compare changes](https://github.com/wobsoriano/solid-zustand/compare/v1.5.1...v2.0.0)
