@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "solid-js": ">=1.4.0",
-    "zustand": "^4.1.0"
+    "zustand": "^4.3.0"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.20.7",
