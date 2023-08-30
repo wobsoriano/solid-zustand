@@ -62,7 +62,7 @@ interface Create {
   <S extends StoreApi<unknown>>(store: S): UseBoundStore<S>
 }
 
-const createImpl = <T extends object>(createState: StateCreator<T, [], []>) => {
+function createImpl<T extends object>(createState: StateCreator<T, [], []>) {
   const api
     = typeof createState === 'function' ? createZustandStore(createState) : createState;
 
@@ -72,7 +72,7 @@ const createImpl = <T extends object>(createState: StateCreator<T, [], []>) => {
   Object.assign(useBoundStore, api);
 
   return useBoundStore;
-};
+}
 
 const create = (<T extends object>(
   createState: StateCreator<T, [], []> | undefined,
