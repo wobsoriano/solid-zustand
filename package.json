@@ -5,6 +5,11 @@
   "publishConfig": {
     "directory": "package"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wobsoriano/solid-zustand.git"
+  },
   "keywords": [
     "solid",
     "state",
@@ -12,18 +17,13 @@
     "store",
     "zustand"
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wobsoriano/solid-zustand.git"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -66,6 +66,9 @@
     "vitest": "^0.31.1",
     "zustand": "^4.3.8"
   },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
   "lint-staged": {
     "{src,test}/**/*.{js,ts,jsx,tsx}": [
       "eslint --fix"
@@ -89,8 +92,5 @@
         "always"
       ]
     }
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
   }
 }
