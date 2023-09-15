@@ -29,12 +29,8 @@ export function useStore<TState extends object, StateSlice>(
     return initialValue;
 
   const options: Parameters<typeof createSignal>[1] = {};
-
-  if (equalityFn) {
-    options.equals = (prev, next) => {
-      return equalityFn(prev as StateSlice, next as StateSlice);
-    };
-  }
+  if (equalityFn)
+    options.equals = equalityFn as any;
 
   const [signal, setSignal] = createSignal(initialValue, options);
 
