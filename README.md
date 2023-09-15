@@ -16,8 +16,8 @@ Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 
 ## Example
 
-```jsx
-import create from 'solid-zustand'
+```tsx
+import create from 'solid-zustand';
 
 interface BearState {
   bears: number
@@ -27,60 +27,57 @@ interface BearState {
 const useStore = create<BearState>(set => ({
   bears: 0,
   increase: () => set(state => ({ bears: state.bears + 1 }))
-}))
+}));
 
 function BearCounter() {
-  const state = useStore()
-  return <h1>{state.bears} around here ...</h1>
+  const state = useStore();
+  return <h1>{state.bears} around here ...</h1>;
 }
 
 function Controls() {
-  const state = useStore()
+  const state = useStore();
   return (
     <>
-      <button onClick={state.increase}>one up</button>
+      <button onClick={state().increase}>one up</button>
       {/* Or */}
-      <button onClick={() => useStore.setState((prev) => ({ bears: prev.bears + 1 }))}>
+      <button onClick={() => useStore.setState(prev => ({ bears: prev.bears + 1 }))}>
         one up
       </button>
     </>
-  )
+  );
 }
 ```
 
-## Selecting multiple state slices
+## Recipes
 
-Since `solid-zustand` uses [createStore](https://www.solidjs.com/docs/latest/api#createstore) to store updates from zustand, state slices only works on plain objects and arrays (as of [v1.4.0](https://github.com/solidjs/solid/releases/tag/v1.4.0)).
+### Fetching everything
 
 ```ts
-// Do this
-const useStore = create(set => ({
-  bears: {
-    count: 0,
-  }
-}));
-const bears = useStore(state => state.bears); // <div>{bears.count}</div>
-
-// Don't
-const useStore = create(set => ({
-  bears: 0
-}));
-const count = useStore(state => state.bears); // <div>{count}</div> Always 0
+const state = useStore();
 ```
 
-Multiple state-picks also works
+### Selecting multiple state slices
+
+It detects changes with strict-equality (old === new) by default, this is efficient for atomic state picks.
+
+```ts
+const nuts = useStore(state => state.nuts);
+const honey = useStore(state => state.honey);
+```
+
+If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of [`createSignal`]:
 
 ```ts
 import shallow from 'zustand/shallow';
 
-// Object pick, either state.bears or state.bulls change
-const { bears, bulls } = useStore(
-  state => ({ bears: state.bears, bulls: state.bulls }),
+// Object pick, either state.nuts or state.honey change
+const state = useStore(
+  state => ({ nuts: state.nuts, honey: state.honey }),
   shallow,
-);
+); // state().nuts, state().honey
 
-// Array pick, either state.bears or state.bulls change
-const [bears, bulls] = useStore(state => [state.bears, state.bulls], shallow);
+// Array pick, either state.nuts or state.honey change
+const state = useStore(state => [state.nuts, state.honey], shallow); // state[0], state[1]
 ```
 
 ## License

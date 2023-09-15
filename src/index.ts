@@ -1,5 +1,5 @@
-import { createStore, reconcile } from 'solid-js/store';
-import { onCleanup } from 'solid-js';
+import type { Accessor } from 'solid-js';
+import { createSignal, onCleanup } from 'solid-js';
 import type {
   Mutate,
   StateCreator,
@@ -23,33 +23,35 @@ export function useStore<TState extends object, StateSlice>(
   selector: (state: TState) => StateSlice = api.getState as any,
   equalityFn?: (a: StateSlice, b: StateSlice) => boolean,
 ) {
-  const initialValue = selector(api.getState()) as any;
-  const [state, setState] = createStore(initialValue);
+  const initialValue = selector(api.getState());
 
-  const listener = (nextState: TState, previousState: TState) => {
-    const prevStateSlice = selector(previousState);
-    const nextStateSlice = selector(nextState);
+  if (typeof initialValue === 'function')
+    return initialValue;
 
-    if (equalityFn !== undefined) {
-      if (!equalityFn(prevStateSlice, nextStateSlice))
-        setState(reconcile(nextStateSlice));
-    }
-    else {
-      setState(reconcile(nextStateSlice));
-    }
-  };
+  const options: Parameters<typeof createSignal>[1] = {};
 
-  const unsubscribe = api.subscribe(listener);
+  if (equalityFn) {
+    options.equals = (prev, next) => {
+      return equalityFn(prev as StateSlice, next as StateSlice);
+    };
+  }
+
+  const [signal, setSignal] = createSignal(initialValue, options);
+
+  const unsubscribe = api.subscribe(setSignal);
   onCleanup(() => unsubscribe());
-  return state;
+
+  return signal;
 }
 
 export type UseBoundStore<S extends StoreApi<unknown>> = {
-  (): ExtractState<S>
+  (): ExtractState<S> extends (...args: any[]) => any
+    ? ExtractState<S>
+    : Accessor<ExtractState<S>>
   <U>(
     selector: (state: ExtractState<S>) => U,
     equals?: (a: U, b: U) => boolean
-  ): U
+  ): U extends (...args: any[]) => any ? U : Accessor<U>
 } & S;
 
 interface Create {
