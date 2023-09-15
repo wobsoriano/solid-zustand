@@ -14,7 +14,9 @@ pnpm add zustand solid-zustand
 
 Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 
-## Example
+## Usage
+
+First create a store
 
 ```tsx
 import create from 'solid-zustand';
@@ -28,10 +30,14 @@ const useStore = create<BearState>(set => ({
   bears: 0,
   increase: () => set(state => ({ bears: state.bears + 1 }))
 }));
+```
 
+Then bind your components, and that's it!
+
+```tsx
 function BearCounter() {
-  const state = useStore();
-  return <h1>{state.bears} around here ...</h1>;
+  const state = useStore(state => state.bears);
+  return <h1>{state().bears} around here ...</h1>;
 }
 
 function Controls() {
