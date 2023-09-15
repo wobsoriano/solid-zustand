@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "solid-js": "^1.6.0",
-    "zustand": "^4.3.0"
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.39.3",
@@ -64,7 +64,7 @@
     "typescript": "5.0.4",
     "vite-plugin-solid": "^2.7.0",
     "vitest": "^0.31.1",
-    "zustand": "^4.3.8"
+    "zustand": "^4.4.1"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
