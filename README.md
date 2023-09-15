@@ -65,7 +65,7 @@ const nuts = useStore(state => state.nuts);
 const honey = useStore(state => state.honey);
 ```
 
-If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of [`createSignal`]:
+If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of `createSignal`:
 
 ```ts
 import shallow from 'zustand/shallow';
