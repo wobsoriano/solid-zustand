@@ -77,7 +77,7 @@ const state = useStore(
 ); // state().nuts, state().honey
 
 // Array pick, either state.nuts or state.honey change
-const state = useStore(state => [state.nuts, state.honey], shallow); // state[0], state[1]
+const state = useStore(state => [state.nuts, state.honey], shallow); // state()[0], state()[1]
 ```
 
 ## License
