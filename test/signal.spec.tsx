@@ -1,7 +1,7 @@
 import { render } from 'solid-js/web';
 import { shallow } from 'zustand/shallow';
 import { beforeEach, describe, expect, it } from 'vitest';
-import create from '../src';
+import { createWithSignal } from '../src';
 
 interface BearState {
   bears: number
@@ -9,7 +9,7 @@ interface BearState {
   increase: () => void
 }
 
-const useStore = create<BearState>(set => ({
+const useStore = createWithSignal<BearState>(set => ({
   bears: 0,
   bulls: 0,
   increase: () => set(state => ({ bears: state.bears + 1 })),
