@@ -5,15 +5,15 @@ import type {
   StoreApi,
 } from 'zustand/vanilla';
 import { createStore as createZustandStore } from 'zustand/vanilla';
-import type { Create, ExtractState } from './types';
+import type { Create, ExtractState, IsFunction } from './types';
 
-export function useStore<S extends StoreApi<unknown>>(api: S): Accessor<ExtractState<S>>;
+export function useStore<S extends StoreApi<unknown>>(api: S): ExtractState<S> extends IsFunction<ExtractState<S>> ? ExtractState<S> : Accessor<ExtractState<S>>;
 
 export function useStore<S extends StoreApi<unknown>, U>(
   api: S,
   selector: (state: ExtractState<S>) => U,
   equalityFn?: (a: U, b: U) => boolean
-): Accessor<U>;
+): U extends IsFunction<U> ? U : Accessor<U>;
 
 export function useStore<TState extends object, StateSlice>(
   api: StoreApi<TState>,
