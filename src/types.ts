@@ -3,12 +3,14 @@ import type { Mutate, StateCreator, StoreApi, StoreMutatorIdentifier } from 'zus
 
 export type ExtractState<S> = S extends { getState: () => infer T } ? T : never;
 
+export type IsFunction<T> = T extends (...args: any[]) => any ? T : never;
+
 export type UseBoundStore<S extends StoreApi<unknown>, P extends 'store' | 'signal'> = {
-  (): P extends 'store' ? ExtractState<S> : Accessor<ExtractState<S>>
+  (): P extends 'store' ? ExtractState<S> : ExtractState<S> extends IsFunction<ExtractState<S>> ? ExtractState<S> : Accessor<ExtractState<S>>
   <U>(
     selector: (state: ExtractState<S>) => U,
     equals?: (a: U, b: U) => boolean
-  ): P extends 'store' ? U : Accessor<U>
+  ): P extends 'store' ? U : U extends IsFunction<U> ? U : Accessor<U>
 } & S;
 
 export interface Create<P extends 'store' | 'signal'> {
