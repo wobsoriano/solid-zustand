@@ -2,6 +2,8 @@
   "name": "solid-zustand",
   "type": "module",
   "version": "1.7.0",
+  "private": false,
+  "sideEffects": false,
   "description": "🐻 State management in Solid using zustand.",
   "license": "MIT",
   "repository": {
@@ -51,52 +53,36 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "release": "bumpp --commit --push --tag && npm publish",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "update-deps": "pnpm up -Li",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\"",
+    "lint": "concurrently pnpm:lint:*",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
+    "lint:types": "tsc --noEmit",
+    "update-deps": "pnpm up -Li"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0",
     "zustand": "^4.3.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config-ts": "^0.39.3",
-    "@babel/core": "^7.22.1",
-    "bumpp": "^9.1.0",
-    "eslint": "^8.41.0",
-    "eslint-plugin-solid": "^0.12.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.18.15",
+    "esbuild-plugin-solid": "^0.5.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^22.1.0",
-    "lint-staged": "^13.2.2",
-    "solid-js": "^1.7.5",
+    "prettier": "3.0.0",
+    "solid-js": "^1.7.8",
     "tsup": "^7.1.0",
-    "tsup-preset-solid": "^2.1.0",
-    "typescript": "5.0.4",
+    "tsup-preset-solid": "^2.0.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.6",
     "vite-plugin-solid": "^2.7.0",
-    "vitest": "^0.31.1",
+    "vitest": "^0.33.0",
     "zustand": "^4.3.8"
   },
-  "eslintConfig": {
-    "plugins": [
-      "solid"
-    ],
-    "extends": [
-      "plugin:solid/typescript",
-      "@antfu/eslint-config-ts"
-    ],
-    "rules": {
-      "semi": [
-        2,
-        "always"
-      ],
-      "@typescript-eslint/semi": [
-        2,
-        "always"
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "package.json"
-  ],
   "browser": {}
 }
