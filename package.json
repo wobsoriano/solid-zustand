@@ -1,10 +1,8 @@
 {
   "name": "solid-zustand",
+  "type": "module",
   "version": "1.7.0",
   "description": "🐻 State management in Solid using zustand.",
-  "publishConfig": {
-    "directory": "package"
-  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,12 +16,33 @@
     "zustand"
   ],
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
+    "solid": {
+      "development": "./dist/dev.jsx",
+      "import": "./dist/index.jsx"
+    },
+    "development": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/dev.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/dev.cjs"
+      }
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {},
   "files": [
     "dist"
   ],
@@ -34,14 +53,8 @@
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "update-deps": "taze -w && pnpm i",
-    "prepublishOnly": "rimraf ./package && pnpm run build && clean-publish",
-    "postpublish": "rimraf ./package"
-  },
-  "clean-publish": {
-    "cleanDocs": true,
-    "withoutPublish": true,
-    "tempDir": "package"
+    "update-deps": "pnpm up -Li",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0",
@@ -51,28 +64,17 @@
     "@antfu/eslint-config-ts": "^0.39.3",
     "@babel/core": "^7.22.1",
     "bumpp": "^9.1.0",
-    "clean-publish": "^4.2.0",
     "eslint": "^8.41.0",
     "eslint-plugin-solid": "^0.12.1",
     "jsdom": "^22.1.0",
     "lint-staged": "^13.2.2",
-    "rimraf": "^5.0.1",
-    "simple-git-hooks": "^2.8.1",
     "solid-js": "^1.7.5",
-    "taze": "^0.10.1",
-    "tsup": "^6.7.0",
+    "tsup": "^7.1.0",
+    "tsup-preset-solid": "^2.1.0",
     "typescript": "5.0.4",
     "vite-plugin-solid": "^2.7.0",
     "vitest": "^0.31.1",
     "zustand": "^4.3.8"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ]
   },
   "eslintConfig": {
     "plugins": [
@@ -92,5 +94,9 @@
         "always"
       ]
     }
-  }
+  },
+  "eslintIgnore": [
+    "package.json"
+  ],
+  "browser": {}
 }
