@@ -27,7 +27,7 @@ describe('createWithSignal', () => {
   });
 
   it('should function correct when rendering in Solid', () => {
-    const div = document.createElement('div');
+    const div = document.createElement('div')
     render(() => {
       const state = useSignalStore();
       const increase = useSignalStore(state => state.increase);
@@ -41,7 +41,7 @@ describe('createWithSignal', () => {
   });
 
   it('should allow multiple state slices', () => {
-    const div = document.createElement('div');
+    const div = document.createElement('div')
     render(() => {
       const state = useSignalStore(state => ({ bears: state.bears, bulls: state.bulls }), shallow);
       useSignalStore.setState({ bears: 6, bulls: 9 });
