@@ -16,7 +16,7 @@ Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 
 ## Usage
 
-First create a store
+First create a zustand store
 
 ```tsx
 import { createWithSignal } from 'solid-zustand'
