@@ -46,7 +46,7 @@ function Controls() {
 }
 ```
 
-If you prefer stores over signals, use `createWithStore` function instead:
+If you prefer [stores](https://docs.solidjs.com/references/api-reference/stores/using-stores) over [signals](https://www.solidjs.com/docs/latest#createsignal), use `createWithStore` function instead:
 
 ```tsx
 import { createWithStore } from 'solid-zustand'
