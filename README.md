@@ -19,14 +19,14 @@ Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 First create a store
 
 ```tsx
-import create from 'solid-zustand'
+import { createWithSignal } from 'solid-zustand'
 
 interface BearState {
   bears: number
   increase: () => void
 }
 
-const useStore = create<BearState>(set => ({
+const useStore = createWithSignal<BearState>(set => ({
   bears: 0,
   increase: () => set(state => ({ bears: state.bears + 1 })),
 }))
@@ -36,13 +36,29 @@ Then bind your components, and that's it!
 
 ```tsx
 function BearCounter() {
-  const state = useStore(state => state.bears)
-  return <h1>{state().bears} around here ...</h1>
+  const bears = useStore(state => state.bears)
+  return <h1>{bears()} around here ...</h1>
 }
 
 function Controls() {
   const increase = useStore(state => state.increase)
   return <button onClick={increase}>one up</button>
+}
+```
+
+If you prefer stores over signals, use `createWithStore` function instead:
+
+```tsx
+import { createWithStore } from 'solid-zustand'
+
+const useStore = createWithStore<BearState>(set => ({
+  bears: 0,
+  increase: () => set(state => ({ bears: state.bears + 1 })),
+}))
+
+function BearCounter() {
+  const bears = useStore()
+  return <h1>{state.bears} around here ...</h1>
 }
 ```
 
@@ -59,8 +75,8 @@ const state = useStore()
 It detects changes with strict-equality (old === new) by default, this is efficient for atomic state picks.
 
 ```ts
-const nuts = useStore(state => state.nuts)
-const honey = useStore(state => state.honey)
+const nuts = useStore(state => state.nuts) // nuts()
+const honey = useStore(state => state.honey) // honey()
 ```
 
 If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of `createSignal`:
