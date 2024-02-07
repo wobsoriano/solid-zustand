@@ -52,7 +52,7 @@
     "prepublishOnly": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 \"src/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
