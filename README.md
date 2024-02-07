@@ -52,13 +52,15 @@ If you prefer [stores](https://docs.solidjs.com/references/api-reference/stores/
 import { createWithStore } from 'solid-zustand'
 
 const useStore = createWithStore<BearState>(set => ({
-  bears: 0,
-  increase: () => set(state => ({ bears: state.bears + 1 })),
+  bears: {
+    count: 0,
+  },
+  increase: () => set(state => ({ bears: state.bears.count + 1 })),
 }))
 
 function BearCounter() {
-  const bears = useStore()
-  return <h1>{state.bears} around here ...</h1>
+  const bears = useStore(state => state.bears)
+  return <h1>{bears.count} around here ...</h1>
 }
 ```
 
