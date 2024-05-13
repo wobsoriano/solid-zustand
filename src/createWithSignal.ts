@@ -28,11 +28,11 @@ export function useStore<TState extends object, StateSlice>(
 
   const [signal, setSignal] = createSignal(initialValue, options)
 
-  const unsubscribe = api.subscribe((payload) => {
+  const unsubscribe = api.subscribe(payload => {
     const nextStateSlice = selector(payload) as any
     setSignal(nextStateSlice)
   })
-  
+
   onCleanup(() => unsubscribe())
 
   return signal

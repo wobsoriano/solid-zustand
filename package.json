@@ -44,6 +44,7 @@
     "dev": "vite serve dev",
     "build": "tsup",
     "test": "concurrently pnpm:test:*",
+    "release": "bumpp --commit --push --tag && npm publish",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
