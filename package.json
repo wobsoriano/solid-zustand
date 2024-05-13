@@ -18,26 +18,22 @@
     "zustand"
   ],
   "exports": {
+    "solid": {
+      "development": "./dist/dev.jsx",
+      "import": "./dist/index.jsx"
+    },
     "development": {
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/dev.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/dev.cjs"
       }
     },
     "import": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "require": {
-      "types": "./dist/index.d.cts",
-      "default": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {},
@@ -45,14 +41,15 @@
     "dist"
   ],
   "scripts": {
+    "dev": "vite serve dev",
     "build": "tsup",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "release": "bumpp --commit --push --tag && npm publish",
+    "test": "concurrently pnpm:test:*",
+    "test:client": "vitest",
+    "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
-    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\"",
+    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 \"src/**/*.{js,ts,json,css,tsx,jsx}\"",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
@@ -61,25 +58,25 @@
     "zustand": "^4.4.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "bumpp": "^9.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "bumpp": "^9.4.1",
     "concurrently": "^8.2.2",
-    "esbuild": "^0.20.0",
-    "esbuild-plugin-solid": "^0.5.0",
-    "eslint": "^8.56.0",
+    "esbuild": "^0.21.2",
+    "esbuild-plugin-solid": "^0.6.0",
+    "eslint": "^9.2.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^24.0.0",
     "prettier": "3.0.0",
-    "solid-js": "^1.8.14",
-    "tsup": "^8.0.1",
+    "solid-js": "^1.8.17",
+    "tsup": "^8.0.2",
     "tsup-preset-solid": "^2.2.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vite-plugin-solid": "^2.9.1",
-    "vitest": "^1.2.2",
-    "zustand": "^4.5.0"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-solid": "^2.10.2",
+    "vitest": "^1.6.0",
+    "zustand": "^4.5.2"
   },
   "browser": {}
 }
