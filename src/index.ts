@@ -1,8 +1,16 @@
-import createWithSignal from './createWithSignal'
-import createWithStore from './createWithStore'
+import { create } from './signal'
+import { create as createStore } from './store'
 
-const create = createWithStore
+export { create, createStore }
 
-export { createWithSignal, createWithStore }
+/**
+ * @deprecated Use `import { create } from 'solid-zustand'` instead
+ */
+const createWithSignal = create
+export { createWithSignal }
 
-export default create
+/**
+ * @deprecated Use `import { create } from 'solid-zustand/store'` instead
+ */
+const createWithStore = createStore
+export { createWithStore }

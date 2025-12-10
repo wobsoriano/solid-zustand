@@ -16,17 +16,17 @@ Demo: https://stackblitz.com/edit/vitejs-vite-tcofpc
 
 ## Usage
 
-First create a zustand store
+First create a zustand store (default uses signals)
 
 ```tsx
-import { createWithSignal } from 'solid-zustand'
+import { create } from 'solid-zustand'
 
 interface BearState {
   bears: number
   increase: () => void
 }
 
-const useStore = createWithSignal<BearState>(set => ({
+const useStore = create<BearState>(set => ({
   bears: 0,
   increase: () => set(state => ({ bears: state.bears + 1 })),
 }))
@@ -52,12 +52,12 @@ function Controls() {
 }
 ```
 
-If you prefer [stores](https://docs.solidjs.com/references/api-reference/stores/using-stores) over [signals](https://www.solidjs.com/docs/latest#createsignal), use `createWithStore` function instead:
+If you prefer the underlying reactivity to use Solid [stores](https://docs.solidjs.com/references/api-reference/stores/using-stores) instead of [signals](https://www.solidjs.com/docs/latest#createsignal), use the `/store` subpath export:
 
 ```tsx
-import { createWithStore } from 'solid-zustand'
+import { create } from 'solid-zustand/store'
 
-const useStore = createWithStore<BearState>(set => ({
+const useStore = create<BearState>(set => ({
   bears: {
     count: 0,
   },
@@ -93,7 +93,7 @@ const nuts = useStore(state => state.nuts) // nuts()
 const honey = useStore(state => state.honey) // honey()
 ```
 
-If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of `createSignal` (if using `createWithSignal`):
+If you want to construct a single object with multiple state-picks inside, similar to redux's mapStateToProps, you can tell zustand that you want the object to be diffed shallowly by passing the `shallow` equality function. That function will then be passed to the [`equals`](https://www.solidjs.com/docs/latest/api#options) option of `createSignal` (if using `create`):
 
 ```ts
 import shallow from 'zustand/shallow'

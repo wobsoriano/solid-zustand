@@ -1,8 +1,8 @@
 import type { Accessor } from 'solid-js'
-import type { StateCreator, StoreApi } from 'zustand/vanilla'
-import type { Create, ExtractState, IsFunction } from './types'
+import type { StoreApi } from 'zustand/vanilla'
+import type { ExtractState, IsFunction } from './shared'
 import { createSignal, onCleanup } from 'solid-js'
-import { createStore as createZustandStore } from 'zustand/vanilla'
+import { createFactory } from './shared'
 
 export function useStore<S extends StoreApi<unknown>>(
   api: S,
@@ -40,18 +40,8 @@ export function useStore<TState extends object, StateSlice>(
   return signal
 }
 
-function createImpl<T extends object>(createState: StateCreator<T, [], []>) {
-  const api = typeof createState === 'function' ? createZustandStore(createState) : createState
+const create = createFactory<'signal'>(useStore)
 
-  const useBoundStore: any = (selector?: any, equalityFn?: any) =>
-    useStore(api, selector, equalityFn)
-
-  Object.assign(useBoundStore, api)
-
-  return useBoundStore
+export {
+  create,
 }
-
-const create = (<T extends object>(createState: StateCreator<T, [], []> | undefined) =>
-  createState ? createImpl(createState) : createImpl) as Create<'signal'>
-
-export default create

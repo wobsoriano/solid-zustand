@@ -1,6 +1,7 @@
 import { render } from 'solid-js/web'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { createWithSignal, createWithStore } from '../src'
+import { create } from '../src'
+import { create as createWithStore } from '../src/store'
 
 interface BearState {
   bears: number
@@ -8,13 +9,13 @@ interface BearState {
   increase: () => void
 }
 
-const useSignalStore = createWithSignal<BearState>(set => ({
+const useSignalStore = create<BearState>(set => ({
   bears: 0,
   bulls: 0,
   increase: () => set(state => ({ bears: state.bears + 1 })),
 }))
 
-describe('createWithSignal', () => {
+describe('create', () => {
   beforeEach(() => {
     useSignalStore.setState({ bears: 0, bulls: 0 })
   })
@@ -64,7 +65,7 @@ const useStore = createWithStore<BearState>(set => ({
   increase: () => set(state => ({ bears: state.bears + 1 })),
 }))
 
-describe('createWithStore', () => {
+describe('create from /store', () => {
   beforeEach(() => {
     useStore.setState({ bears: 0, bulls: 0 })
   })
@@ -105,5 +106,29 @@ describe('createWithStore', () => {
       )
     }, div)
     expect(div.textContent).toBe('Bears:6 | Bulls:9')
+  })
+})
+
+describe('new API - create (signal)', () => {
+  const useNewStore = create<BearState>(set => ({
+    bears: 0,
+    bulls: 0,
+    increase: () => set(state => ({ bears: state.bears + 1 })),
+  }))
+
+  beforeEach(() => {
+    useNewStore.setState({ bears: 0, bulls: 0 })
+  })
+
+  it('should work with new create API', () => {
+    const div = document.createElement('div')
+    render(() => {
+      const state = useNewStore()
+      const increase = useNewStore(state => state.increase)
+      expect(state().bears).toBe(0)
+      increase()
+      return <span>{state().bears}</span>
+    }, div)
+    expect(div.innerHTML).toBe('<span>1</span>')
   })
 })
