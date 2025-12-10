@@ -1,7 +1,7 @@
 {
   "name": "solid-zustand",
   "type": "module",
-  "version": "1.8.1",
+  "version": "2.0.0",
   "packageManager": "pnpm@10.25.0",
   "description": "🐻 State management in Solid using zustand.",
   "license": "MIT",
