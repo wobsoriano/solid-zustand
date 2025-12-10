@@ -54,7 +54,7 @@ describe('createWithSignal', () => {
         </span>
       )
     }, div)
-    expect(div.textContent).toBe('Bears: 6 | Bulls: 9')
+    expect(div.textContent).toBe('Bears:6 | Bulls:9')
   })
 })
 
@@ -104,6 +104,6 @@ describe('createWithStore', () => {
         </span>
       )
     }, div)
-    expect(div.textContent).toBe('Bears: 6 | Bulls: 9')
+    expect(div.textContent).toBe('Bears:6 | Bulls:9')
   })
 })
