@@ -1,8 +1,8 @@
-import { createStore, reconcile } from 'solid-js/store'
-import { onCleanup } from 'solid-js'
 import type { StateCreator, StoreApi } from 'zustand/vanilla'
-import { createStore as createZustandStore } from 'zustand/vanilla'
 import type { Create, ExtractState } from './types'
+import { onCleanup } from 'solid-js'
+import { createStore, reconcile } from 'solid-js/store'
+import { createStore as createZustandStore } from 'zustand/vanilla'
 
 export function useStore<S extends StoreApi<unknown>>(api: S): ExtractState<S>
 
@@ -25,8 +25,10 @@ export function useStore<TState extends object, StateSlice>(
     const nextStateSlice = selector(nextState)
 
     if (equalityFn !== undefined) {
-      if (!equalityFn(prevStateSlice, nextStateSlice)) setState(reconcile(nextStateSlice))
-    } else {
+      if (!equalityFn(prevStateSlice, nextStateSlice))
+        setState(reconcile(nextStateSlice))
+    }
+    else {
       setState(reconcile(nextStateSlice))
     }
   }

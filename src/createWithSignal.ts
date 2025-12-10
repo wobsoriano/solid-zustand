@@ -1,8 +1,8 @@
 import type { Accessor } from 'solid-js'
-import { createSignal, onCleanup } from 'solid-js'
 import type { StateCreator, StoreApi } from 'zustand/vanilla'
-import { createStore as createZustandStore } from 'zustand/vanilla'
 import type { Create, ExtractState, IsFunction } from './types'
+import { createSignal, onCleanup } from 'solid-js'
+import { createStore as createZustandStore } from 'zustand/vanilla'
 
 export function useStore<S extends StoreApi<unknown>>(
   api: S,
@@ -21,14 +21,16 @@ export function useStore<TState extends object, StateSlice>(
 ) {
   const initialValue = selector(api.getState())
 
-  if (typeof initialValue === 'function') return initialValue
+  if (typeof initialValue === 'function')
+    return initialValue
 
   const options: Parameters<typeof createSignal>[1] = {}
-  if (equalityFn) options.equals = equalityFn as any
+  if (equalityFn)
+    options.equals = equalityFn as any
 
   const [signal, setSignal] = createSignal(initialValue, options)
 
-  const unsubscribe = api.subscribe(payload => {
+  const unsubscribe = api.subscribe((payload) => {
     const nextStateSlice = selector(payload) as any
     setSignal(nextStateSlice)
   })

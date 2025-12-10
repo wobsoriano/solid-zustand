@@ -2,8 +2,7 @@
   "name": "solid-zustand",
   "type": "module",
   "version": "1.8.1",
-  "private": false,
-  "sideEffects": false,
+  "packageManager": "pnpm@10.25.0",
   "description": "🐻 State management in Solid using zustand.",
   "license": "MIT",
   "repository": {
@@ -18,66 +17,42 @@
     "zustand"
   ],
   "exports": {
-    "solid": {
-      "development": "./dist/dev.jsx",
-      "import": "./dist/index.jsx"
-    },
-    "development": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
-      }
-    },
-    "import": {
+    ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {},
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite serve dev",
-    "build": "tsup",
-    "test": "concurrently pnpm:test:*",
+    "build": "tsdown",
+    "test": "vitest run",
     "release": "bumpp --commit --push --tag && npm publish",
-    "test:client": "vitest",
-    "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
-    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
-    "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
-    "lint:types": "tsc --noEmit",
-    "update-deps": "pnpm up -Li"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0",
-    "zustand": "^4.4.0"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.9.0",
-    "@typescript-eslint/parser": "^7.9.0",
-    "bumpp": "^9.4.1",
+    "@antfu/eslint-config": "^6.5.1",
+    "bumpp": "^9.11.1",
     "concurrently": "^8.2.2",
-    "esbuild": "^0.21.2",
+    "esbuild": "^0.21.5",
     "esbuild-plugin-solid": "^0.6.0",
-    "eslint": "^9.2.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-no-only-tests": "^3.1.0",
-    "jsdom": "^24.0.0",
-    "prettier": "3.0.0",
-    "solid-js": "^1.8.17",
-    "tsup": "^8.0.2",
-    "tsup-preset-solid": "^2.2.0",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11",
-    "vite-plugin-solid": "^2.10.2",
-    "vitest": "^1.6.0",
-    "zustand": "^4.5.2"
-  },
-  "browser": {}
+    "eslint": "^9.39.1",
+    "eslint-plugin-solid": "^0.14.5",
+    "jsdom": "^24.1.3",
+    "solid-js": "^1.9.10",
+    "tsdown": "^0.17.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.7",
+    "vite-plugin-solid": "^2.11.10",
+    "vitest": "^3.2.4",
+    "zustand": "^5.0.9"
+  }
 }

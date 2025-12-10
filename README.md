@@ -37,7 +37,13 @@ Then bind your components, and that's it!
 ```tsx
 function BearCounter() {
   const bears = useStore(state => state.bears)
-  return <h1>{bears()} around here ...</h1>
+  return (
+    <h1>
+      {bears()}
+      {' '}
+      around here ...
+    </h1>
+  )
 }
 
 function Controls() {
@@ -60,7 +66,13 @@ const useStore = createWithStore<BearState>(set => ({
 
 function BearCounter() {
   const bears = useStore(state => state.bears)
-  return <h1>{bears.count} around here ...</h1>
+  return (
+    <h1>
+      {bears.count}
+      {' '}
+      around here ...
+    </h1>
+  )
 }
 ```
 

@@ -9,8 +9,8 @@ export type UseBoundStore<S extends StoreApi<unknown>, P extends 'store' | 'sign
   (): P extends 'store'
     ? ExtractState<S>
     : ExtractState<S> extends IsFunction<ExtractState<S>>
-    ? ExtractState<S>
-    : Accessor<ExtractState<S>>
+      ? ExtractState<S>
+      : Accessor<ExtractState<S>>
   <U>(
     selector: (state: ExtractState<S>) => U,
     equals?: (a: U, b: U) => boolean,
