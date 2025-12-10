@@ -34,7 +34,7 @@
     "build": "tsdown",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "release": "bumpp --commit --push --tag && npm publish",
+    "release": "pnpm build && changeset publish",
     "prepublishOnly": "pnpm build",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
@@ -46,7 +46,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "^6.5.1",
     "@changesets/cli": "^2.29.8",
-    "bumpp": "^9.11.1",
     "eslint": "^9.39.1",
     "eslint-plugin-solid": "^0.14.5",
     "jsdom": "^24.1.3",
