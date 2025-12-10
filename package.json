@@ -33,6 +33,7 @@
     "dev": "vite serve dev",
     "build": "tsdown",
     "test": "vitest run",
+    "typecheck": "tsc --noEmit",
     "release": "bumpp --commit --push --tag && npm publish",
     "prepublishOnly": "pnpm build",
     "lint": "eslint",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.5.1",
+    "@changesets/cli": "^2.29.8",
     "bumpp": "^9.11.1",
     "eslint": "^9.39.1",
     "eslint-plugin-solid": "^0.14.5",
