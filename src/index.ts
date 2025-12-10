@@ -1,7 +1,7 @@
 import { create } from './signal'
 import { create as createStore } from './store'
 
-export { create, createStore }
+export { create }
 
 /**
  * @deprecated Use `import { create } from 'solid-zustand'` instead
